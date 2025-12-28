@@ -93,6 +93,8 @@ Make a new file named like this in the following directory:
 
 **`/home/username/.config/wireplumber/wireplumber.conf.d/50-rename-outputs.conf`**
 
+**Reboot** or use **`systemctl --user restart wireplumber`** to apply the changes.
+
 **Example `50-rename-outputs.conf`:**
 ```
 monitor.alsa.rules = [
