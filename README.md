@@ -3,11 +3,11 @@
 ![Showcase](/example.jpg)
 
 ## :beginner: Description
-The tool shows a little menu to switch between your pipewire audio outputs(sinks). It was written with Hyprland and it's [Special Workspace's (aka scratchpad's)](https://wiki.hypr.land/Configuring/Dispatchers/#special-workspace) in mind, but should be usable with any other compositor that got a scratchpad feature too like Sway etc., or even just from your terminal if you wish to.
+The tool spawns a little menu running in your terminal to switch between your pipewire audio outputs(sinks). It was written with Hyprland and it's [Special Workspace's (aka scratchpad's)](https://wiki.hypr.land/Configuring/Dispatchers/#special-workspace) in mind, but should be usable with any other compositor that got a scratchpad feature aswell(Sway etc.), or you can run it just in the terminal if you wish to.
 <br/>
 
 ## :dna: Dependencies
-Using [Hyprland](https://hypr.land/): As most modern distro's already use pipewire & wireplumber as their audio backend/frontend, the only thing you might need to install as dependency is [fzf](https://github.com/junegunn/fzf).
+Using [Hyprland](https://hypr.land/): As most modern distro's already use pipewire & wireplumber as their audio backend/frontend, the only thing you might need to install as a dependency is [fzf](https://github.com/junegunn/fzf).
 
 ### List of dependencies
 - **Hyprland** or any other compositor that makes use of some sort of scratchpad
@@ -35,14 +35,19 @@ chmod +x sinkswitch.sh
 
 ## :link: Scratchpad Config
 
-### Hyprland Keybinding
-If you want to use a keybinding to call and open the menu use something like the following in your **`hyprland.conf`**. Tweak the **move** coordinates and **size** of the displayed scratchpad to fit your needs.
-This example uses a extra macro key my keyboard has and uses my 3440x1440px monitor.
-```sh
-bind = , XF86Tools, exec, [workspace special:kitty-sinkswitch; monitor DP-1; float; move 2936 64; size 480 160] kitty --class kitty-scratch -e ~/scripts/sinkswitch.sh -exclude 46
+### hyprland.conf
+Add this windowrule to your **`hyprland.conf`**. Tweak the **monitor**, **move** coordinates and **size** to adjust the displayed scratchpad to fit your needs.
+This example uses a 3440x1440px monitor and scratchpad size only needs to fit 3 menu entries. The menu is spawned in the top right of the screen.
+```
+windowrule = monitor DP-1, float, move 2936 64, size 480 160, class:kitty-sinkswitch
+```
+### Keybinding
+This example uses an extra macro key on the keyboard, but you can assign it to any key of your choosing.
+```
+bind = , XF86Tools, exec, [workspace special:sinkswitch] kitty --class kitty-sinkswitch -e ~/scripts/sinkswitch.sh -exclude 46
 ```
 ### Waybar Integration
-If you want to use a button on your waybar(e.g. from your volume control), this can easily done by linking the script and executing it with **`hyprctl dispatch`**.
+If you want to use a button on your waybar(e.g. from your volume control) to open the menu, this can easily be done by executing the script with **`hyprctl dispatch`**.
 
 Example:
 ```sh
@@ -50,7 +55,7 @@ Example:
         "format": "{icon} {volume}%",
         "tooltip": false,
         "format-muted": " Muted",
-        "on-click": "hyprctl dispatch exec \"[workspace special:kitty-sinkswitch; monitor DP-1; float; move 2916 64; size 500 180] kitty --class kitty-scratch -e ~/scripts/sinkswitch.sh -exclude 46\"",
+        "on-click": "hyprctl dispatch exec \"[workspace special:sinkswitch] kitty --class kitty-sinkswitch -e ~/scripts/sinkswitch.sh -exclude 46\"",
         "on-scroll-up": "pamixer -i 5",
         "on-scroll-down": "pamixer -d 5",
         "scroll-step": 5,
@@ -59,10 +64,12 @@ Example:
         		"low!": 30,
         		"critical!": 15
         },
+},
 ```
+<br/>
 
 ## :no_entry_sign: Exclude/Hide certain outputs(sinks)
-If you want to hide one or more outputs(sinks) from your menu you can do so by calling the script with the **`-exclude`** flag followed by a comma seperated list of sink id's to hide.
+If you want to hide one or more outputs(sinks) from your menu, you can do so by calling the script with the **`-exclude`** flag, followed by a comma seperated list of sink id's to hide.
 Show all sinks and their id's:
 ```sh
 wpctl status
@@ -95,6 +102,11 @@ Make a new file named like this in the following directory:
 **`/home/username/.config/wireplumber/wireplumber.conf.d/50-rename-outputs.conf`**
 
 **Reboot** or use **`systemctl --user restart wireplumber`** to apply the changes.
+
+You can get the **`node.name`** and current **`node.description`** with
+```sh
+pw-cli list-objects Node
+```
 
 **Example `50-rename-outputs.conf`:**
 ```
@@ -143,10 +155,7 @@ monitor.alsa.rules = [
   }
 ]
 ```
-You can get the **`node.name`** and current **`node.description`** with
-```sh
-pw-cli list-objects Node
-```
+
 ## :scroll: Changelog and current state (yyyy-mm-dd)
 
 - [x] 2025-12-28 | v1.0 | Upload the script and create a suitable README
